@@ -1,0 +1,105 @@
+1. Select Data
+The first thing to do is to select appropriate relevant data that carries the most of the
+systems dynamics we want the neural network to reproduce. In our case we need to
+select data that are relevant for weather forecasting. We have collected data from various
+sources like:
+ www.data.gov.in
+ (http://www.ncdc.noaa.gov/)
+ www.kaggle.com , etc.
+2. Preprocessing Data
+Raw data collected from a data source usually present different particularities, such as
+data range, sampling and category. Some variables are result from measurements while
+others are summary or even calculated. Preprocessing means to adapt these variables
+value to a form neural networks can handle properly.
+
+(a) Problems in Dataset
+ Something changed in the middle of data collection: The most common
+issues are that the data hasn’t actually been collected for the task you are being
+asked to do. And it had been asked to make the data validate an outcome which
+has already been decided.
+ Excel butchery: Operational errors that are been made while handling datasets.
+ Date/time mismatch: There’s a date and a timestamp recorded, but that timestamp
+did not happen during that date.
+ Text field formatting: If its a JSON or text field, there’s almost always a few
+rows in which there’s a missing quote or closing curly brace, and then import
+procedures die a sad, sad death.
+ Undocumented missing data codes: Sometimes when data isn’t collected, a
+missing data code is entered, usually a value that the data can’t take on in real
+life.
+ Confusing column names: Yet another case of ”why does no one document
+their data?”
+(b) Cleaning of Datasets
+Data cleaning involve different techniques based on the problem and the data type.
+Different methods can be applied with each has its own trade-offs. Overall, incorrect
+data is either removed, corrected, or imputed.
+ Irrelevant data: Irrelevant data are those that are not actually needed, and dont
+fit under the context of the problem were trying to solve.
+ Duplicates: Duplicates are data points that are repeated in your dataset. A common
+symptom is when two users have the same identity number. Or, the same
+article was scrapped twice. And therefore, they simply should be removed.
+ Syntax errors: Remove white spaces: Extra white spaces at the beginning or
+the end of a string should be removed.
+ Pad strings: Strings can be padded with spaces or other characters to a certain
+width.
+ Fix typos: Strings can be entered in many different ways, and no wonder, can
+have mistakes.
+ Standardize: Our duty is to not only recognize the typos but also put each
+value in the same standardized format. For strings, make sure all values are
+either in lower or upper case. For numerical values, make sure all values have
+a certain measurement unit.
+ Scaling / Transformation: Scaling means to transform your data so that it fits
+within a specific scale, such as 0100 or 01.
+ Missing values: Given the fact the missing values are unavoidable leaves one
+with the question of what to do when one encounters them. Ignoring the missing
+data is the same as digging holes in a boat; It will sink.
+(c) Normalisation
+Normalization is the process to get all the variables into the same data range, usually
+with smaller values, between 0 and 1 or -1 and 1. This helps the neural network to
+present values within the variable zone in activation functions such as sigmoid or
+hyperbolic tangent.
+Values too high or too low may drive neurons to produce values that are too high or
+too low as well for the activation functions, therefore leading the derivative for these
+neurons to be too small, near zero.
+The normalization should consider a predefined range of the dataset. It is performed
+right away:
+where Nmin and Nmax represent the normalized minimum and maximum limits,
+Xmin and Xmax denote X variables minimum and maximum limits,
+X indicates the original value, and
+Xnorm refers to the normalized value.
+If we want the normalization to be between 0 and 1, for example, the equation is
+simplified as follows:
+By applying the normalization, a new normalized dataset is produced and is fed to
+the neural network. One should also take into account that a neural network fed with
+normalized values will be trained to produce normalized values on the output, so the
+inverse (denormalization) process becomes necessary as well.
+3. Implementation
+For the implementation part, we are using Java programming language. In addition, we
+had to add two components to the project:
+ Chart
+Charts can be drawn in Java by using the freely available package JFreeChart (http :
+==www:jfree:org=jfreechart=). This package is attached with this chapters source
+code. So, we designed a class called Chart. It implements methods basically
+for plotting data series by making calls to natively implemented methods of the
+JFreeChart classes.
+ Handling data files
+To work with data files, we had to implement a class called Data. It currently performs
+reads from the so-called CSV format, which is suitable for data import and
+export. This class also performs preprocessing on the data by means of normalization.
+
+4. Build a neural network
+To forecast weather, we collected daily data from various sources. The neural network
+was trained to forecast the average temperature. So, the structure of the neural network is
+shown in the following figure:
+Figure 5: Structure of Neural Network
+Here, the network is trained, and then, the charts of the error are plotted.
+The following factors will affect the performance of our Artificial Neural Network Model:-
+ No. of Neurons/Layer
+ No. of Samples
+ Transfer Function for Hidden Layers
+ No. of Hidden Layers
+ Overfitting
+Giving life to a neuron- Activation function
+Th neuron’s output is given by an activation function. This component adds non-linearity
+to neural network processing , which is needed because the natural neuron has non-linear
+behaviors. An activation function is usually bounded between two values at the output,
+therefore being a non-linear function, but in some special cases, it can be linear function.
