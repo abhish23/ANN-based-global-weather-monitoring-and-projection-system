@@ -1,0 +1,34 @@
+An Artificial Neural Network (ANN) is an information processing paradigm that is inspired
+by the way biological nervous systems, such as the brain, process information. The key element
+of this paradigm is the new structure of the information processing system.It is composed of a
+huge number of highly interconnected processing elements (neurons) working together to solve
+specific problems.ANNs, like people, learn by example.An ANN is configured for a particular
+application, such as pattern recognition or data classification, through a learning process.
+Learning in biological systems adds adjustments to the synaptic connections that exist between
+the neurons. The ANN has capability to extract the relationship between the inputs and outputs
+of a process, without the physics being explicitly provided .Thus, these properties of ANN
+are well suited to the problem of weather forecasting.The main purpose is to develop the most
+suitable ANN architecture and its associated training technique for weather prediction. This
+development will be based on using two different neural network architecture to demonstrate
+the suitable one for this application.
+Components of a modern weather forecasting system include the following modules:
+1. Data Collection Observations of atmospheric pressure, temperature, wind speed, wind
+direction, humidity and precipitation are made near the earths surface by trained observers,
+automatic weather stations.
+2. Data assimilation During the data assimilation process,information gained from the observations
+is used in conjunction with a numerical model most recent forecast for the time
+that observations were made to produce the meteorological analysis.
+3. Numerical Weather Prediction Numerical Weather Prediction (NWP) uses the power
+of computers to make a forecast. Complex computer programs, also known as forecast
+models, run on supercomputers and provide predictions on many atmospheric variables
+such as temperature, pressure, wind and rainfall.
+A typical neural network consists of layers. In a single layered network there is an input layer of
+source nodes and an output layer of neurons. A multi-layer network has in addition one or more
+hidden layers. Extra hidden neurons raise the networks ability to extract higher order statistics
+from (input) data. Furthermore a network is said to be fully connected if every node in each
+layer of the network is connected to every other node in the adjacent forward layer .The network
+learns by adjusting the interconnections (called weights) between layers. When the network is
+adequately trained, it is able to generalize relevant output for a set of input data. A valuable
+property of neural networks is that of generalization, whereby a trained neural network is able
+to provide a correct matching in the form of output data for a set of previously unseen input
+data.we are using Back Propagation Neural Network with one hidden layer.
